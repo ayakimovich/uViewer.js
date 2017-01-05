@@ -1,0 +1,26 @@
+body {
+  /*margin-left: 100;*/
+  margin-top: 200;
+  margin-bottom: 200;
+  width: 96%;
+  margin-left: auto;
+  margin-right: auto;
+  background: rgb(250, 250, 250); /* this is an orange */
+}
+.button-svg {
+    background: rgb(28, 184, 65); /* this is a green */
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+.button-png {
+    background: rgb(223, 117, 20); /* this is an orange */
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+.logo{
+    display: block;
+    margin-left: 50%;
+    margin-bottom: : 5%;
+}
