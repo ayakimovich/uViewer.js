@@ -29,11 +29,30 @@ var html = d3.select("body").select("svg")
 
 d3.select("#png_a").remove();
 
+var imgsrc = 'data:image/svg+xml;base64,' + btoa(html);
+var canvas = document.querySelector("canvas"),
+        context = canvas.getContext("2d");
+//canvas.setAttribute('width', 526);
+//canvas.setAttribute('height', 233);
+
+var image = new Image;
+image.src = imgsrc;
+image.onload = function () {
+    context.drawImage(image, 0, 0);
+    var canvasdata = canvas.toDataURL("image/png");
+    var a = document.createElement("a");
+    a.textContent = "save";
+    a.download = "export_" + Date.now() + ".png";
+    a.href = canvasdata;
+    document.body.appendChild(a);
+    canvas.parentNode.removeChild(canvas);
+};
+
 d3.select("#savePNGButtonDiv")
     .append("a")
     .html("Download PNG")
     .attr("href", "data:image/png;base64,"+ btoa(html))
-    .attr("download", "png_figure")
+    .attr("download", +"png_figure")
     .attr("class", "png_a")
     .attr("id", "png_a")
     .attr("class", "pure-button button-png");
