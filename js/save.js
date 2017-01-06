@@ -26,7 +26,7 @@ var html = d3.select("body").select("svg")
     .attr("version", 1.1)
     .attr("xmlns", "http://www.w3.org/2000/svg")
     .node().parentNode.innerHTML;
-    
+
 d3.select("#png_a").remove();
 
 d3.select("#savePNGButtonDiv")
@@ -35,5 +35,6 @@ d3.select("#savePNGButtonDiv")
     .attr("href", "data:image/png;base64,"+ btoa(html))
     .attr("download", "png_figure")
     .attr("class", "png_a")
+    .attr("id", "png_a")
     .attr("class", "pure-button button-png");
 }

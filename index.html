@@ -59,6 +59,8 @@ NB: relies on a working internet connection for the libraries.
   WBhTJCWxg+XJqOEo2IdVeBTWtJV1uqtDXogLxmQkpbGwujMMmAh5EStxvR6BvwMAzYYNeIWwSOMAAAAASUVORK5CYII="/>
 
   <script src="http://d3js.org/d3.v3.min.js" type="text/javascript"></script>
+  <script src="js/initialize.js"></script>
+  <script src="js/labels.js"></script>
   <script src="js/uViewer.js"></script>
   <script src="js/save.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.1/build/pure-min.css" integrity="sha384-CCTZv2q9I9m3UOxRLaJneXrrqKwUNOzZ6NGEUMwHtShDJ+nCoiXJCAgi05KfkLGY" crossorigin="anonymous"/>
@@ -70,7 +72,8 @@ NB: relies on a working internet connection for the libraries.
   <!--<![endif]-->
   <link rel="stylesheet" href="css/main.css">
 </head>
-<body onload="uViewer()">
+<!--<body onload="uViewer()">-->
+<body>
   <div class="pure-g">
     <!--<div class="pure-u-2-3"></div>-->
     <div class="pure-u-2-5">
@@ -80,13 +83,13 @@ NB: relies on a working internet connection for the libraries.
   </div>
   <div class="pure-g">
     <div class="pure-u-1">
-      <form class="pure-form pure-form-stacked" method ="GET" action="" onSubmit="uViewer()">
+      <form class="pure-form pure-form-stacked" method ="GET" action="">
         <fieldset>
-            <legend><br>Settings</legend>
+            <legend><br><br>Settings</legend>
 
             <div class="pure-g">
                 <div class="pure-u-1 pure-u-md-1-3">
-                    <label for="imageFolderPath">Path to image folder</label>
+                    <label for="imageFolderPath">Path to image folder (local or remote)</label>
                     <input id="imageFolderPath" class="pure-u-23-24" type="text" value="img/">
                 </div>
 
@@ -116,127 +119,71 @@ NB: relies on a working internet connection for the libraries.
                 </div>
 
                 <div class="pure-u-1 pure-u-md-1-2">
-                    <label for="redImageName">Red image name</label>
+                    <label for="redImageName" style="color: red;">Red image name</label>
                     <input id="redImageName" class="pure-u-23-24" type="text" value="red.png">
                 </div>
 
                 <div class="pure-u-1 pure-u-md-1-2">
-                    <label for="greenStainingLabel">Red staining label</label>
-                    <input id="greenStainingLabel" class="pure-u-23-24" type="text" value="anti-Body 1">
+                    <label for="redStainingLabel" style="color: red;">Red staining label</label>
+                    <input id="redStainingLabel" class="pure-u-23-24" type="text" value="anti-Body 1">
                 </div>
 
                 <div class="pure-u-1 pure-u-md-1-2">
-                    <label for="greenImageName">Green image name</label>
+                    <label for="greenImageName" style="color: green;">Green image name</label>
                     <input id="greenImageName" class="pure-u-23-24" type="text" value="green.png">
                 </div>
 
                 <div class="pure-u-1 pure-u-md-1-2">
-                    <label for="greenStainingLabel">Green staining label</label>
+                    <label for="greenStainingLabel" style="color: green;">Green staining label</label>
                     <input id="greenStainingLabel" class="pure-u-23-24" type="text" value="anti-Body 2">
                 </div>
 
                 <div class="pure-u-1 pure-u-md-1-2">
-                    <label for="redImageName">Red image name</label>
-                    <input id="redImageName" class="pure-u-23-24" type="text" value="blue.png">
+                    <label for="blueImageName" style="color: blue;">Blue image name</label>
+                    <input id="blueImageName" class="pure-u-23-24" type="text" value="blue.png">
                 </div>
 
                 <div class="pure-u-1 pure-u-md-1-2">
-                    <label for="redStainingLabel">Red staining label</label>
-                    <input id="redStainingLabel" class="pure-u-23-24" type="text" value="anti-Body 1">
+                    <label for="blueStainingLabel" style="color: blue;">Blue staining label</label>
+                    <input id="blueStainingLabel" class="pure-u-23-24" type="text" value="anti-Body 1">
                 </div>
 
                 <div class="pure-u-1 pure-u-md-1-2">
-                    <label for="redImageName">Red image name</label>
-                    <input id="redImageName" class="pure-u-23-24" type="text" value="red.png">
+                    <label for="grayImageName" style="color: gray;">Gray image name</label>
+                    <input id="grayImageName" class="pure-u-23-24" type="text" value="red.png">
                 </div>
 
                 <div class="pure-u-1 pure-u-md-1-2">
-                    <label for="redStainingLabel">Red staining label</label>
-                    <input id="redStainingLabel" class="pure-u-23-24" type="text" value="anti-Body 1">
+                    <label for="grayStainingLabel" style="color: gray;">Gray staining label</label>
+                    <input id="grayStainingLabel" class="pure-u-23-24" type="text" value="anti-Body 1">
                 </div>
 
             </div>
 
 
-            <button type="submit" class="pure-button pure-button-primary" id="submitButton">Apply</button>
+            <a class="pure-button pure-button-primary" id="submitButton" onclick="uViewer()">Apply</a>
         </fieldset>
       </form>
     </div>
   </div>
 
   <div class="pure-g">
-    <div class="pure-u-1">
-      <svg>
-        <g id="bigRGBImageGroup">
-          <image id="bigRGBImage">
-        </g>
-        <g>
-          <clipPath id="clipPathRGB">
-            <rect id="clipRGB"/>
-          </clipPath>
-            <image id="clipRGBImage" clip-path="url(#clipPathRGB)">
-        </g>
-        <g>
-          <rect id="clipRGBFrame"/>
-        </g>
-        <g>
-          <clipPath id="clipPathRed">
-            <rect id="clipRed"/>
-          </clipPath>
-            <image id="redImage" clip-path="url(#clipPathRed)">
-        </g>
-        <g>
-          <rect id="clipRedFrame"/>
-        </g>
-
-        <g>
-          <clipPath id="clipPathGreen">
-            <rect id="clipGreen"/>
-          </clipPath>
-            <image id="greenImage" clip-path="url(#clipPathGreen)">
-        </g>
-        <g>
-          <rect id="clipGreenFrame"/>
-        </g>
-
-        <g>
-          <clipPath id="clipPathBlue">
-            <rect id="clipBlue"/>
-          </clipPath>
-            <image id="blueImage" clip-path="url(#clipPathBlue)">
-        </g>
-        <g>
-          <rect id="clipBlueFrame"/>
-        </g>
-
-        <g>
-          <clipPath id="clipPathGray">
-            <rect id="clipGray"/>
-          </clipPath>
-            <image id="grayImage" clip-path="url(#clipPathGray)">
-        </g>
-        <g>
-          <rect id="clipGrayFrame"/>
-        </g>
-
-      </svg>
+    <div class="pure-u-1" id="svgDiv">
+      <p></p><svg></svg>
     </div>
   </div>
   <div class="pure-g">
-    <div class="pure-u-1-4">
-          <input name="saveButton"  class="pure-button"
-             type="button"
-             value="Generate SVG"
-             onclick="saveSVGImage()" />
-    </div>
+    <div class="pure-u-1-4" id="generateSVGButtonDiv"><a></a></div>
     <div class="pure-u-1-4" id="saveSVGButtonDiv"><a id="svg_a"></a></div>
-    <div class="pure-u-1-4">
-      <input name="saveButton"  class="pure-button"
-         type="button"
-         value="Generate PNG"
-         onclick="savePNGImage()" />
-    </div>
+    <div class="pure-u-1-4" id="generatePNGButtonDiv"><a></a></div>
     <div class="pure-u-1-4" id="savePNGButtonDiv"><a id="png_a"></a></div>
+  </div>
+
+  <div class="pure-g">
+    <div class="pure-u-1">
+      <br><br>
+      <h5 style="color: #C3C3C3; font-size: 10pt; font-family: Arial; text-align: center">Copyright &copy; 2016 - <script type="text/javascript">var year = new Date(); document.write(year.getFullYear());</script> Artur Yakimovich, PhD</h5>
+    </div>
   </div>
 </body>
 </html>

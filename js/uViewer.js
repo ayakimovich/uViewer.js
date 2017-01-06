@@ -1,16 +1,13 @@
 function uViewer() {
-  document.getElementById("submitButton").addEventListener("click", function(event){
-    event.preventDefault()
-  });
 
-  var   //imageFolder = "img/",
+  initialize();
+
         imageFolder = document.getElementById('imageFolderPath').value,
-        rgbImageFileName = "RGB.png",
         rgbImageFileName = document.getElementById('rgbImageName').value,
-        redImageFileName = "red.png",
-        greenImageFileName = "green.png",
-        blueImageFileName = "blue.png",
-        grayImageFileName = "gray.png";
+        redImageFileName = document.getElementById('redImageName').value,
+        greenImageFileName = document.getElementById('greenImageName').value,
+        blueImageFileName = document.getElementById('blueImageName').value,
+        grayImageFileName = document.getElementById('grayImageName').value;
 
     //update default values by changed values
     document.getElementById('imageFolderPath').value = imageFolder;
@@ -25,11 +22,11 @@ function uViewer() {
   function mainSVG(rgbImage, redImage, greenImage, blueImage, grayImage){
           //main svg start
           console.log("uViewer start")
-          var svgWidth = 1200,
+          var svgWidth = document.getElementById('canvasWidth').value,
               svgHeight = svgWidth/2 + 100,
               r = 0,
               imagePadding = 5,
-              scaleBarSize = 20,
+              scaleBarSize = document.getElementById('scaleBarWidth').value,
               micronPixelRatio = 31.015,
               scaleBarHeight = 5,
               rgbWidth = svgWidth/2-imagePadding*4,
@@ -506,6 +503,7 @@ function uViewer() {
                   .attr("height", height - dragBarWidth)
                   .attr("width", width - dragBarWidth);
       }
+      labels(rgbWidth,rgbHeight,imagePadding);
   }
 //resizable zoom rectangle code end
 
