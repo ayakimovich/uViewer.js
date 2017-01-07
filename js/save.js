@@ -22,10 +22,17 @@ d3.select("#saveSVGButtonDiv")
 function savePNGImage(){
 console.log("Button Pressed");
 
-
+var svg = d3.select("#svgDiv").select("svg")
+    .attr("title", "uViewer.js_render.svg")
+    .attr("version", 1.1)
+    .attr("xmlns", "http://www.w3.org/2000/svg")
+    .node().parentNode.innerHTML;
+    svg = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>"+svg;
+    svg = svg.replace(/<p>(.*?)<\/p>/, "" );
+    
 d3.select("#png_a").remove();
 
-var svg = document.querySelector('svg');
+
 var canvas = document.createElement('canvas');
 canvas.height = svg.getAttribute('height');
 canvas.width = svg.getAttribute('width');
