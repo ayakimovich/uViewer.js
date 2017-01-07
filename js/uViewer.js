@@ -232,14 +232,34 @@ function uViewer() {
             .attr("stroke-width",0)
             .attr("stroke-opacity",0.9);
 
-        svg.append("text")
-            .attr("x", scaleBarX+scaleBarWidth/2-25)
-            .attr("y", scaleBarY-scaleBarHeight-imagePadding)
-            .attr("font-family", "sans-serif")
-            .attr("font-size", 20)
-            .attr("fill", "lightgray")
-            .attr("fill-opacity", 0.9)
-            .text(scaleBarSize+" µm");
+        var scaleBarText = svg.append("text")
+                              .attr("x", scaleBarX+scaleBarWidth/2-25)
+                              .attr("y", scaleBarY-scaleBarHeight-imagePadding)
+                              .attr("font-family", "sans-serif")
+                              .attr("font-size", 20)
+                              .attr("fill", "lightgray")
+                              .attr("fill-opacity", 0.9)
+                              .text(scaleBarSize+" ");
+        var textBoxWidth = scaleBarText.node().getBBox().width,
+            textBoxHeight = scaleBarText.node().getBBox().height;
+
+        var um = svg.append("g")
+                    .attr("id","um")
+                    .attr("x", scaleBarX+scaleBarWidth/2-25+textBoxWidth)
+                    .attr("y", scaleBarY-scaleBarHeight-Math.ceil(textBoxHeight*0.5)-imagePadding)
+                    .attr("width",Math.ceil(textBoxHeight*1.8))
+                    .attr("height",Math.ceil(textBoxHeight*0.7));
+        um.append("path")
+          .attr({
+           "d" : "m 210.87576,363.79077 -2.2705,0 0,-1.44043 q -0.90333,0.95215 -1.7334,1.33057 -0.81787,0.36621 -1.77002,0.36621 -0.91553,0 -1.64795,-0.32959  -0.73242,-0.32959 -1.75781,-1.30615 l 0,6.40869 -2.29493,0 0,-18.66455 2.29493,0 0,10.22949 q 0.39062,0.47607 1.35498,0.97656 0.96435,0.50049  2.07519,0.50049 1.13526,0 1.96533,-0.40283 0.83008,-0.41504 1.48926,-1.14746 l 0,-10.15625 2.29492,0 0,13.63525 z",
+           "style" : "font-size:25px;fill:#dcdcdc;fill-opacity:0.58823529",
+           "id" : "u"
+          })
+          .attr({
+           "d" : "m 235.31424,363.79077 -2.29492,0 0,-7.76367 q 0,-0.87891 -0.0854,-1.69678 -0.0732,-0.81787 -0.32959,-1.30615 -0.28076,-0.5249 -0.80567,-0.7 9346   -0  .5249,-0.26855 -1.51367,-0.26855 -0.96435,0 -1.92871,0.48828 -0.96435,0.47607 -1.92871,1.2207 0.0366,0.28076 0.061,0.65918 0.0244,0.36621 0.  0244, 0.73242  l  0,8.72803 -2.29492,0 0,-7.76367 q 0,-0.90332 -0.0855,-1.70898 -0.0732,-0.81788 -0.32959,-1.30616 -0.28076,-0.5249 -0.80567,-0.78125 -0.5249, -0.26  855   -1  .51367,-0.26855 -0.93994,0 -1.89209,0.46387 -0.93994,0.46386 -1.87988,1.18408 l 0,10.18066 -2.29492,0 0,-13.63525 2.29492,0 0,1.51367 q 1.07  422,- 0.89 111  2. 13623,-1.3916 1.07422,-0.50049 2.28272,-0.50049 1.3916,0 2.35595,0.58594 0.97657,0.58593 1.45264,1.62353 1.3916,-1.17187 2.53906,-1.68457 1. 14746  ,-0.  5249  2.45362,-0.5249 2.24609,0 3.3081,1.36719 1.07422,1.35498 1.07422,3.79638 l 0,8.8501 z",
+           "style" : "font-size:25px;fill:#dcdcdc;fill-opacity:0.58823529",
+           "id" : "m"
+          });;
 
         //resizable zoom rectangle code begin
 
