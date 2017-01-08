@@ -8,7 +8,7 @@ function initialize(){
   d3.select("#svgDiv").append("p")
                       .html("NB: Move the region of interest (ROI) rectangle to select the field of the zoomed view (hover over corners). Resize ROI to zoom in/out (hover over borders).")
   //create all the groups
-  var svg = d3.select("#svgDiv").append("svg");
+  var svg = d3.select("#svgDiv").append("svg").attr("id","mainSvgElement");
   svg.append("g")
      .attr("id", "bigRGBImageGroup");
   svg.append("g")
