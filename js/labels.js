@@ -1,4 +1,4 @@
-function labels(rgbWidth,rgbHeight,imagePadding){
+function labels(svgWidth,svgHeight,rgbWidth,rgbHeight,imagePadding){
 
   var redStainingLabel = document.getElementById('redStainingLabel').value,
       greenStainingLabel = document.getElementById('greenStainingLabel').value,
@@ -23,6 +23,17 @@ function labels(rgbWidth,rgbHeight,imagePadding){
   realignRight("#blueTextBox", rgbWidth, imagePadding);
   addLable(group,grayStainingLabel, imagePadding, rgbHeight-imagePadding-fontHeight*1, "lightgray");
   realignRight("#lightgrayTextBox", rgbWidth, imagePadding);
+
+  //add generated text
+  group.append("text")
+       .attr("id", "generatedText")
+       .attr("x", Math.ceil(svgWidth/2-svgWidth*0.2))
+       .attr("y", svgHeight-5)
+       .attr("font-family", "sans-serif")
+       .attr("font-size", 15)
+       .attr("fill", "lightgray")
+       .attr("fill-opacity", 0.9)
+       .text("generated with uViewer.js on http://ayakimovich.github.io/uViewer.js");
 
   function addLable(group,stainingLabel, x, y, color){
     group.append("g").append("text")

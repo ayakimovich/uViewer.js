@@ -18,22 +18,22 @@ d3.select("#saveSVGButtonDiv")
     .attr("id", "svg_a")
     .attr("class", "pure-button button-svg");
 }
-
-function savePNGImage(){
-console.log("Button Pressed");
-
-var svg = d3.select("#svgDiv").select("svg")
-    .attr("title", "uViewer.js_render.svg")
-    .attr("version", 1.1)
-    .attr("xmlns", "http://www.w3.org/2000/svg")
-    .node().parentNode.innerHTML;
-    //svg = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>"+svg;
-    svg = svg.replace(/<p>(.*?)<\/p>/, "" );
-    
-d3.select("#png_a").remove();
+// png currently doesn't work beacuse of the lack of server side or CORS alternative
+//function savePNGImage(){
+//console.log("Button Pressed");
+//
+//var svg = d3.select("#svgDiv").select("svg")
+//    .attr("title", "uViewer.js_render.svg")
+//    .attr("version", 1.1)
+//    .attr("xmlns", "http://www.w3.org/2000/svg")
+//    .node().parentNode.innerHTML;
+//    //svg = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>"+svg;
+//    svg = svg.replace(/<p>(.*?)<\/p>/, "" );
+//    
+//d3.select("#png_a").remove();
 
 //saveSvgAsPng(svg, "diagram.png");
-saveSvgAsPng(document.getElementById("mainSvgElement"), "diagram.png");
+//saveSvgAsPng(document.getElementById("mainSvgElement"), "diagram.png");
 
 //var canvas = document.createElement('canvas');
 //canvas.height = svg.getAttribute('height');
@@ -50,4 +50,4 @@ saveSvgAsPng(document.getElementById("mainSvgElement"), "diagram.png");
 //    .attr("download", Date.now()+"png_figure")
 //    .attr("id", "png_a")
 //    .attr("class", "pure-button button-png");
-}
+//}

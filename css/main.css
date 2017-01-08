@@ -6,8 +6,8 @@ body {
   margin-left: auto;
   margin-right: auto;
   /*background: rgb(250, 250, 250); /* this is an orange */
-  background: -moz-radial-gradient(farthest-side, rgba(0,0,0,0) 90%, rgba(0,0,0,0.2) 150%) #fff;
-background: -webkit-gradient(radial, center center, 500, center center, 1400, from(rgba(0,0,0,0)), to(rgba(0,0,0,0.6))) #fff;
+  background: -moz-radial-gradient(farthest-side, rgba(220,220,220,0) 90%, rgba(220,220,220,0.2) 220%) #fff;
+background: -webkit-gradient(radial, center center, 500, center center, 1400, from(rgba(220,220,220,0)), to(rgba(220,220,220,0.6))) #fff;
 }
 .button-svg {
     background: rgb(28, 184, 65); /* this is a green */

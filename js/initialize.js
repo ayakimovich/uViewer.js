@@ -8,7 +8,9 @@ function initialize(){
   d3.select("#svgDiv").append("p")
                       .html("NB: Move the region of interest (ROI) rectangle to select the field of the zoomed view (hover over corners). Resize ROI to zoom in/out (hover over borders).")
   //create all the groups
-  var svg = d3.select("#svgDiv").append("svg").attr("id","mainSvgElement");
+  var svg = d3.select("#svgDiv").append("svg")
+                                .attr("id","mainSvgElement")
+                                .attr("background","white");
   svg.append("g")
      .attr("id", "bigRGBImageGroup");
   svg.append("g")
@@ -108,10 +110,10 @@ function initialize(){
                                      .attr("class", "pure-button")
                                      .attr("onclick", "saveSVGImage()")
                                      .html("Generate SVG");
-  d3.select("#generatePNGButtonDiv").append("a")
-                                     .attr("class", "pure-button")
-                                     .attr("onclick", "savePNGImage()")
-                                     .html("Generate PNG");
+  //d3.select("#generatePNGButtonDiv").append("a")
+  //                                   .attr("class", "pure-button")
+  //                                   .attr("onclick", "savePNGImage()")
+  //                                   .html("Generate PNG");
 
 
    console.log("svg initialized");
