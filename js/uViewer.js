@@ -350,9 +350,9 @@ function uViewer() {
 
           //adding scale bar text
 
-          function zoomToImageCoordinate(zoomX,naturalWidth,rgbWidth,paneX,imagePadding,zoomPaneWidth){
+          function zoomToImageCoordinate(zoomX,naturalWidth,rgbWidth,paneX,imagePadding,zoomPaneWidth, zoomerWidth){
 
-                var zoomImageZero = Math.floor(paneX - zoomX*(naturalWidth/rgbWidth) + imagePadding*2);//*(naturalWidth/rgbWidth));
+                var zoomImageZero = Math.floor(paneX - zoomX*(naturalWidth/rgbWidth) + imagePadding*(naturalWidth/rgbWidth)*(zoomerWidth/rgbWidth));//*(naturalWidth/rgbWidth));
                 // console.log("recomputed coordinate: "+zoomImageZero);
                 return zoomImageZero;
           }
@@ -395,35 +395,35 @@ function uViewer() {
                 clipRGBImage
                   .attr("width", zoomScaleNaturalSize(rgbImage.naturalWidth, width, rgbWidth, rgbZoomPaneWidth))
                   .attr("height", zoomScaleNaturalSize(rgbImage.naturalHeight, height, rgbHeight, rgbZoomPaneHeight))
-                  .attr("x", zoomToImageCoordinate(d.x,zoomScaleNaturalSize(rgbImage.naturalWidth, width, rgbWidth, rgbZoomPaneWidth),rgbWidth,rgbZoomPaneX,imagePadding,zoomPaneWidth))
-                  .attr("y", zoomToImageCoordinate(d.y,zoomScaleNaturalSize(rgbImage.naturalHeight, height, rgbHeight, rgbZoomPaneHeight),rgbHeight,rgbZoomPaneY,imagePadding,zoomPaneHeight));
+                  .attr("x", zoomToImageCoordinate(d.x,zoomScaleNaturalSize(rgbImage.naturalWidth, width, rgbWidth, rgbZoomPaneWidth),rgbWidth,rgbZoomPaneX,imagePadding,zoomPaneWidth, width))
+                  .attr("y", zoomToImageCoordinate(d.y,zoomScaleNaturalSize(rgbImage.naturalHeight, height, rgbHeight, rgbZoomPaneHeight),rgbHeight,rgbZoomPaneY,imagePadding,zoomPaneHeight, height));
                 
                 // console.log("recomputing: red...");
                 redImage
                   .attr("width", zoomScaleNaturalSize(rgbImage.naturalWidth, width, rgbWidth, zoomPaneWidth))
                   .attr("height", zoomScaleNaturalSize(rgbImage.naturalHeight, height, rgbHeight, zoomPaneHeight))
-                  .attr("x", zoomToImageCoordinate(d.x,zoomScaleNaturalSize(rgbImage.naturalWidth, width, rgbWidth, zoomPaneWidth),rgbWidth,redZoomPaneX,imagePadding,zoomPaneWidth))
-                  .attr("y", zoomToImageCoordinate(d.y,zoomScaleNaturalSize(rgbImage.naturalHeight, height, rgbHeight, zoomPaneHeight),rgbHeight,redZoomPaneY,imagePadding,zoomPaneHeight));
+                  .attr("x", zoomToImageCoordinate(d.x,zoomScaleNaturalSize(rgbImage.naturalWidth, width, rgbWidth, zoomPaneWidth),rgbWidth,redZoomPaneX,imagePadding,zoomPaneWidth, width))
+                  .attr("y", zoomToImageCoordinate(d.y,zoomScaleNaturalSize(rgbImage.naturalHeight, height, rgbHeight, zoomPaneHeight),rgbHeight,redZoomPaneY,imagePadding,zoomPaneHeight, height));
                 
                 // console.log("recomputing: green...");                
                 greenImage
                   .attr("width", zoomScaleNaturalSize(rgbImage.naturalWidth, width, rgbWidth, zoomPaneWidth))
                   .attr("height", zoomScaleNaturalSize(rgbImage.naturalHeight, height, rgbHeight, zoomPaneHeight))
-                  .attr("x", zoomToImageCoordinate(d.x,zoomScaleNaturalSize(rgbImage.naturalWidth, width, rgbWidth, zoomPaneWidth),rgbWidth,greenZoomPaneX,imagePadding,zoomPaneWidth))
-                  .attr("y", zoomToImageCoordinate(d.y,zoomScaleNaturalSize(rgbImage.naturalHeight, height, rgbHeight, zoomPaneHeight),rgbHeight,greenZoomPaneY,imagePadding,zoomPaneHeight));
+                  .attr("x", zoomToImageCoordinate(d.x,zoomScaleNaturalSize(rgbImage.naturalWidth, width, rgbWidth, zoomPaneWidth),rgbWidth,greenZoomPaneX,imagePadding,zoomPaneWidth, width))
+                  .attr("y", zoomToImageCoordinate(d.y,zoomScaleNaturalSize(rgbImage.naturalHeight, height, rgbHeight, zoomPaneHeight),rgbHeight,greenZoomPaneY,imagePadding,zoomPaneHeight, height));
                 
                 // console.log("recomputing: blue...");                
                 blueImage
                   .attr("width", zoomScaleNaturalSize(rgbImage.naturalWidth, width, rgbWidth, zoomPaneWidth))
                   .attr("height", zoomScaleNaturalSize(rgbImage.naturalHeight, height, rgbHeight, zoomPaneHeight))
-                  .attr("x", zoomToImageCoordinate(d.x,zoomScaleNaturalSize(rgbImage.naturalWidth, width, rgbWidth, zoomPaneWidth),rgbWidth,blueZoomPaneX,imagePadding,zoomPaneWidth))
-                  .attr("y", zoomToImageCoordinate(d.y,zoomScaleNaturalSize(rgbImage.naturalHeight, height, rgbHeight, zoomPaneHeight),rgbHeight,blueZoomPaneY,imagePadding,zoomPaneHeight));
+                  .attr("x", zoomToImageCoordinate(d.x,zoomScaleNaturalSize(rgbImage.naturalWidth, width, rgbWidth, zoomPaneWidth),rgbWidth,blueZoomPaneX,imagePadding,zoomPaneWidth, width))
+                  .attr("y", zoomToImageCoordinate(d.y,zoomScaleNaturalSize(rgbImage.naturalHeight, height, rgbHeight, zoomPaneHeight),rgbHeight,blueZoomPaneY,imagePadding,zoomPaneHeight, height));
                 // console.log("recomputing: gray...");
                 grayImage
                   .attr("width", zoomScaleNaturalSize(rgbImage.naturalWidth, width, rgbWidth, zoomPaneWidth))
                   .attr("height", zoomScaleNaturalSize(rgbImage.naturalHeight, height, rgbHeight, zoomPaneHeight))
-                  .attr("x", zoomToImageCoordinate(d.x,zoomScaleNaturalSize(rgbImage.naturalWidth, width, rgbWidth, zoomPaneWidth),rgbWidth,grayZoomPaneX,imagePadding,zoomPaneWidth))
-                  .attr("y", zoomToImageCoordinate(d.y,zoomScaleNaturalSize(rgbImage.naturalHeight, height, rgbHeight, zoomPaneHeight),rgbHeight,grayZoomPaneY,imagePadding,zoomPaneHeight));
+                  .attr("x", zoomToImageCoordinate(d.x,zoomScaleNaturalSize(rgbImage.naturalWidth, width, rgbWidth, zoomPaneWidth),rgbWidth,grayZoomPaneX,imagePadding,zoomPaneWidth, width))
+                  .attr("y", zoomToImageCoordinate(d.y,zoomScaleNaturalSize(rgbImage.naturalHeight, height, rgbHeight, zoomPaneHeight),rgbHeight,grayZoomPaneY,imagePadding,zoomPaneHeight, height));
 
           }
 
