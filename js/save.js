@@ -1,6 +1,16 @@
 function saveSVGImage(){
 console.log("Button Pressed");
 
+var treatment = document.getElementById('treatmentLabel').value;
+treatment = treatment.replace(/[^\w]/gi, "");
+
+var now = new Date();
+var year = now.getFullYear();
+var month = now.getMonth();
+var day = now.getMonth();
+
+var formatedDate = year+"-"+month+"-"+day;
+
 var html = d3.select("#svgDiv").select("svg")
     .attr("title", "uViewer.js_render.svg")
     .attr("version", 1.1)
@@ -14,7 +24,7 @@ d3.select("#saveSVGButtonDiv")
     .append("a")
     .html("Download SVG")
     .attr("href", "data:image/svg+xml;base64,"+ btoa(html))
-    .attr("download", "svg_figure")
+    .attr("download", formatedDate+"_"+treatment)
     .attr("id", "svg_a")
     .attr("class", "pure-button button-svg");
 }
