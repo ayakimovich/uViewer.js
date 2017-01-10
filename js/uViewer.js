@@ -1,21 +1,21 @@
 function uViewer() {
   var opts = {
-      lines: 13 // The number of lines to draw
+      lines: 9 // The number of lines to draw
     , length: 56 // The length of each line
-    , width: 14 // The line thickness
-    , radius: 69 // The radius of the inner circle
-    , scale: 1 // Scales overall size of the spinner
+    , width: 20 // The line thickness
+    , radius: 50 // The radius of the inner circle
+    , scale: 2 // Scales overall size of the spinner
     , corners: 1 // Corner roundness (0..1)
-    , color: '#ccc' // #rgb or #rrggbb or array of colors
-    , opacity: 0.75 // Opacity of the lines
+    , color: '#c9c9c9' // #rgb or #rrggbb or array of colors
+    , opacity: 0.9 // Opacity of the lines
     , rotate: 16 // The rotation offset
     , direction: 1 // 1: clockwise, -1: counterclockwise
     , speed: 1 // Rounds per second
-    , trail: 87 // Afterglow percentage
-    , fps: 20 // Frames per second when using setTimeout() as a fallback for CSS
+    , trail: 80 // Afterglow percentage
+    , fps: 24 // Frames per second when using setTimeout() as a fallback for CSS
     , zIndex: 2e9 // The z-index (defaults to 2000000000)
     , className: 'spinner' // The CSS class to assign to the spinner
-    , top: '170%' // Top position relative to parent
+    , top: '50%' // Top position relative to parent
     , left: '50%' // Left position relative to parent
     , shadow: false // Whether to render a shadow
     , hwaccel: false // Whether to use hardware acceleration
